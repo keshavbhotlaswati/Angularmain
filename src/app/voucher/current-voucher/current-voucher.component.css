@@ -1,0 +1,67 @@
+.alertRed {
+    color: #CC0000;
+    font-family: Arial, helvetica, sans serif, MS Sans Serif;
+    font-size: 11px;
+    font-weight: bold;
+}
+.alerthead2 {
+    color: #000000;
+    font-family: Arial, helvetica, sans serif, MS Sans Serif;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.data {
+    color: #000000;
+    font-family: Arial, helvetica, sans serif, MS Sans Serif;
+    font-size: 11px;
+    font-weight: normal;
+    text-decoration: none;
+}
+.details{
+    color: #000000;
+    font-family: Arial, helvetica, sans serif, MS Sans Serif;
+    font-size: 11px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.partcol{
+    width: 90px;
+}
+
+.mycol{
+    width: 40px;
+}
+
+.mktcol{
+    width: 30px;
+}
+
+.modeltypecol{
+    width: 85px;
+}
+
+.replacementcol{
+    width: 135px;
+}
+
+.claimscol{
+    width: 42px;
+}
+
+.warrentycostscol{
+    width: 48px;
+}
+
+.handlingcol{
+    width: 62px;
+}
+
+.totalcol{
+    width: 65px;
+}
+
+.supplierrespcol{
+    width: 125px;
+}

@@ -1,0 +1,272 @@
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { stringify } from 'querystring';
+import { environment } from 'src/environments/environment';
+
+
+import {HelpertabService} from '../service/helpertab.service';
+
+@Component({
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css']
+})
+export class MainComponent  {
+
+	
+	
+  
+
+	constructor(private router: Router ,private helper_service:HelpertabService) { 
+		
+		
+	}
+	@ViewChild('scrollMe',{static:true}) private myScrollContainer: ElementRef;
+	todayDate: Date = new Date();
+
+	//dateFilter = (d: Date): boolean => {
+	// const day = d.getDay();
+	// Prevent Saturday and Sunday from being selected.
+	// return day !== 0 && day !== 6;
+	//}
+
+	dateFilter(d: Date): boolean {
+		const day = d.getDay();
+		const month = d.getMonth();
+		const todays_date = d.getDate();
+		const todaysDateObject = new Date();
+		const today = todaysDateObject.getDate();
+		const actualMonth = todaysDateObject.getMonth();
+		console.log(todays_date)
+
+		/** Prevent actual system date from being selected.*/
+		if (month === actualMonth && todays_date === today) {
+			return false;
+		} else if (day !== 0 && day !== 6) {
+			return true;
+		} else {
+			return false;
+		}
+
+		/** Prevent Saturday, Sunday.*/
+		//		return day !== 0 && day !== 6;
+	}
+
+	MainTabLinks = [
+		{ label: 'Home', link: '/home' },
+		{ label: 'Administration', link: '/user-role-mapping' },
+		{ label: 'Call-in Part List', link: '/call-in-part-historical' },
+		{ label: 'Transfer Part List', link: '/transfer-part-current' },
+		{ label: 'Voucher', link: '/current-voucher' },
+		{ label: 'Warranty Claim', link: '/daily-warranty-claim' },
+		{ label: 'Maintenance', link: '/shipping-cost' },
+		{ label: 'Audit Trail', link: '/call-in' },
+		{ label: 'WRP', link: '/wrp-home' },
+
+	];
+
+	//  HomeTabLinks = [
+	// 	    {label: 'Home', link: 'home'},
+	// 	    //The links below are temporary code used for showing how Angualar and RESTFul API work together for CQP/WRP project
+	// 	    {label: 'API Persistence Example', link: 'tplitems'}, 
+	// 	    {label: 'Material Table Example', link: 'table' },
+	// 	    {label: 'Insert and Stored Procedure Example', link: 'add'}, 
+	// 	    {label: 'Search API Example', link: 'search'}, 
+	// 	    {label: 'WRP Database Example', link: 'part-override'},
+	// 	    {label: 'Proposed UX', link: 'proposed-ux'},
+	// 	  ];
+
+	WRPTabLinks = [
+		{ label: 'Home', link: 'wrp-home' },
+		{ label: 'Add new WRP', link: 'add-new-wrp' },
+		{ label: 'WRP Summary Edit', link: 'wrp-summary-edit' },
+		{ label: 'WRP Voucher Create', link: 'wrp-voucher-create' },
+		{ label: 'Voucher Tracking Data', link: 'voucher-tracking-data' },
+		{ label: 'Part Override', link: 'part-override' },
+		{ label: 'View Current WRP Voucher', link: 'view-current-wrp-voucher' },
+		{ label: 'View Historical WRP Voucher', link: 'view-historical-wrp-voucher' },
+	];
+
+	AdministrationTabLinks = [
+		{ label: 'User Role Mapping', link: 'user-role-mapping' },
+		{ label: 'CQ Supplier Setup', link: 'cq-supplier-setup' },
+		{ label: 'Supplier Profile', link: 'supplier-profile' },
+		{ label: 'Labor/Handling', link: 'labor-handling' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+	];
+
+	CallInPartListTabLinks = [
+		{ label: 'Historical', link: 'call-in-part-historical' },
+		{ label: 'Active', link: 'call-in-part-active' },
+		{ label: 'Create Request', link: 'create-request' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+	];
+
+	TransferPartListTabLinks = [
+		{ label: 'Current', link: 'transfer-part-current' },
+		{ label: 'Historical', link: 'transfer-part-historical' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+	];
+
+	VoucherTabLinks = [
+		{ label: 'Current Voucher', link: 'current-voucher' },
+		{ label: 'Historical Voucher', link: 'historical-voucher' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+	];
+
+	WarrantyClaimTabLinks = [
+		{ label: 'Daily Warranty Claim', link: 'daily-warranty-claim' },
+		{ label: 'Warranty Reports', link: 'warranty-reports' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+	];
+
+	MaintenanceTabLinks = [
+		{ label: 'Manage Message Center', link: 'manage-message-center' },
+		{ label: 'Manage Part Cost', link: 'manage-part-cost' },
+		{ label: 'Block Parts', link: 'block-parts' },
+		{ label: 'Shipping Cost', link: 'shipping-cost' },
+		{ label: 'Honda Holiday', link: 'honda-holiday' },
+		{ label: 'WRP Updates', link: 'wrp-updates' },
+		{ label: 'Manage Categories', link: 'manage-categories' },
+		{ label: 'Manage BOM', link: 'manage-bom' },
+		{ label: '              ' },
+	];
+
+	AuditTrailTabLinks = [
+		{ label: 'Call-In', link: 'call-in' },
+		{ label: 'Transfer Part List', link: 'audit-trail-transfer-part-list' },
+		{ label: 'Voucher', link: 'audit-trail-voucher' },
+		{ label: 'Administration', link: 'audit-trail-administration' },
+		{ label: 'Category', link: 'audit-trail-category' },
+		{ label: 'Bill Of Materials', link: 'audit-trail-bom' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+		{ label: '              ' },
+	];
+
+
+	title = 'cqp-angular8-springboot-client';
+	//selectedStatus: number;
+	//selectedConclusion: number;
+
+	findBySpecField(data, reqField, value, resField) {
+		var container = data;
+		for (var i = 0; i < container.length; i++) {
+			if (container[i][reqField] == value) {
+				return (container[i][resField]);
+			}
+		}
+		return '';
+	}
+
+	//General tab
+
+	onTabPanelClick(event, tab) {
+		console.log("================  tab = " + tab.label + "====== event = " + event.label);
+	}
+
+	gotoTop() {
+		window.scroll({
+			top: 0,
+			left: 0,
+			behavior: 'smooth',
+		});
+	}
+	
+	gotoBottom() {
+        window.scrollTo(0,document.body.scrollHeight);             
+    }
+
+	tabname:string="";
+
+
+	moveToSelectedTab($event) {
+		var tabName = $event.tab.textLabel;
+		
+		console.log("================ tabName = " + tabName);
+		this.tabname=tabName;
+		for (let i = 0; i < document.querySelectorAll('.mat-tab-label-content').length; i++) {
+			for (let tabLink of this.MainTabLinks) {
+				if (tabName == tabLink.label) {
+						
+		console.log("================ tablink = " + tabLink.link);
+		this.helper_service.changenavigateforbutton=false;
+					this.helper_service.getTabnameAndTablink(tabName,tabLink.link);
+					//(<HTMLElement>document.querySelectorAll('.mat-tab-label')[i]).click();
+					this.router.navigate([tabLink.link]);
+			
+				}
+			};
+		}
+	}
+
+
+move(tabLink){
+let	tablink1="/"+tabLink;
+this.helper_service.getTabnameAndTablink(this.tabname,tablink1);
+this.helper_service.changenavigateforbutton=false;
+  this.router.navigate([tabLink]);
+
+
+
+}
+
+openWindow(xyz:string) {
+	if(xyz.indexOf('privacy')>-1)
+	{
+		window.open(xyz, '_blank', 'location=yes,height=1930,width=763,scrollbars=yes,status=yes');
+	}
+	else if(xyz.indexOf('about')>-1)
+	{
+		window.open(xyz, '_blank', 'location=yes,height=270,width=800,scrollbars=yes,status=yes');
+	}
+	else if(xyz.indexOf('terms')>-1)
+	{
+		window.open(xyz, '_blank', 'location=yes,height=2195,width=763,scrollbars=yes,status=yes');
+	}
+	
+}
+
+
+windowopen1(){	
+	 
+
+const final_apiurl=this.helper_service.windowopen1();
+
+window.open( final_apiurl , '_blank', 'location=yes,height=2195,width=763,scrollbars=yes,status=yes');
+
+}
+}
+
