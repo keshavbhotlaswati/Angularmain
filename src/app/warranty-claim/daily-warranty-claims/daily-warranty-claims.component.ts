@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HelpertabService } from 'src/app/service/helpertab.service';
 
 @Component({
   selector: 'app-daily-warranty-claims',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DailyWarrantyClaimsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private helpservice:HelpertabService) { }
 
   ngOnInit() {
   } 
@@ -16,6 +17,8 @@ export class DailyWarrantyClaimsComponent implements OnInit {
   public hide: boolean = true;
   public inner: boolean = false;
   public outer: boolean = true;
+  public show1: boolean = false;
+  public message:string="";
   toggle() {
     this.show = !this.show;
     this.hide = !this.hide;
@@ -53,5 +56,11 @@ export class DailyWarrantyClaimsComponent implements OnInit {
     });
     this.selectedToRemove = [];
   }
-
+  clicksearch() {
+    this.show1= true;
+    
+    this.message="Search for Warranty_Claim_Daily";
+    this.helpservice.changenavigatehelpforbutton(this.show1);
+    this.helpservice.changenavigateforbuttons(this.message);
+  }
 }

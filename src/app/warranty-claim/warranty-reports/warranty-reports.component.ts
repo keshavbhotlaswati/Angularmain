@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { WarrantyReportService } from '../../service/warrantyReport.service';
 import { Label } from 'ng2-charts'; 
+import { HelpertabService } from 'src/app/service/helpertab.service';
 @Component({
   selector: 'app-warranty-reports',
   templateUrl: './warranty-reports.component.html',
@@ -13,7 +14,9 @@ export class WarrantyReportsComponent implements OnInit {
   public hide: boolean = true;
   public chart ;
   public barChartData  = new Array();
-  constructor(private warrantyReportService: WarrantyReportService) { }
+  public show1: boolean = false;
+  public message:string="";
+  constructor(private warrantyReportService: WarrantyReportService, private helpservice:HelpertabService) { }
 
   ngOnInit() {
     this.getWarrantyreport();
@@ -132,5 +135,51 @@ export class WarrantyReportsComponent implements OnInit {
     });
     this.selectedToRemove = [];
   }
+  clickStackBar() {
+    this.show1= true;
+    
+    this.message="Stack_bar for Warranty_reports";
+    this.helpservice.changenavigatehelpforbutton(this.show1);
+    this.helpservice.changenavigateforbuttons(this.message);
+  }
 
+  clickOveralSummary() {
+    this.show1= true;
+    
+    this.message="Overal_summary for Warranty_reports";
+    this.helpservice.changenavigatehelpforbutton(this.show1);
+    this.helpservice.changenavigateforbuttons(this.message);
+  }
+
+  clickPartSummary(){
+    this.show1= true;
+    
+    this.message="Part_summary for Warranty_reports";
+    this.helpservice.changenavigatehelpforbutton(this.show1);
+    this.helpservice.changenavigateforbuttons(this.message);
+  }
+
+  clickClaimDetails(){
+    this.show1= true;
+    
+    this.message="Claim_details for Warranty_reports";
+    this.helpservice.changenavigatehelpforbutton(this.show1);
+    this.helpservice.changenavigateforbuttons(this.message);
+  }
+
+  clickTrendData(){
+    this.show1= true;
+    
+    this.message="Trend_data for Warranty_reports";
+    this.helpservice.changenavigatehelpforbutton(this.show1);
+    this.helpservice.changenavigateforbuttons(this.message);
+  }
+
+  clickDefectSummary(){
+    this.show1= true;
+    
+    this.message="Defect_summary for Warranty_reports";
+    this.helpservice.changenavigatehelpforbutton(this.show1);
+    this.helpservice.changenavigateforbuttons(this.message);
+  }
 }

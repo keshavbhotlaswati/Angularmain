@@ -271,7 +271,7 @@
                         </td>
                         <td align="left" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
 
-                            <a (click)=toggle1()>
+                            <a (click)=toggle1();clicksubmitrequest()>
                                 SUBMITTED
                             </a>
 
@@ -321,7 +321,7 @@
                         </td>
                         <td align="left" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
 
-                            <a (click)=toggle1()>
+                            <a (click)=toggle1();clicksubmitrequest()>
                                 SUBMITTED
                             </a>
 
@@ -375,7 +375,7 @@
                         <button type="reset" class="cqp-btn">Export</button> &nbsp;&nbsp;
                         <button (click)="toggle()" class="cqp-btn">Select All</button> &nbsp;&nbsp;
                         <button type="reset" class="cqp-btn">Deselect All</button> &nbsp;&nbsp;
-                        <button (click)="toggle()" class="cqp-btn">Cancel</button>
+                        <button (click)="toggle();clickreset()" class="cqp-btn">Cancel</button>
                     </td>
                 </tr>
             </table>
@@ -716,9 +716,9 @@
 
                 <button (click)="toggle()" class="cqp-btn">Save</button> &nbsp;&nbsp;
                 <button type="reset" class="cqp-btn">Reset</button> &nbsp;&nbsp;
-                <button (click)="toggle2()" class="cqp-btn">Comments</button> &nbsp;&nbsp;
+                <button (click)="toggle2();clickComment()" class="cqp-btn">Comments</button> &nbsp;&nbsp;
                 <button type="reset" class="cqp-btn">Delete</button> &nbsp;&nbsp;
-                <button (click)="toggle1()" class="cqp-btn">Cancel</button>
+                <button (click)="toggle1();clickreset()" class="cqp-btn">Cancel</button>
             </td>
         </tr>
     </table>
@@ -806,8 +806,8 @@
             <td _ngcontent-tjl-c5="" width="50%"></td>
             <td _ngcontent-tjl-c5="" align="right">
                 <button _ngcontent-tjl-c5="" class="cqp-btn">Submit</button> &nbsp;&nbsp;
-                <button _ngcontent-tjl-c5="" class="cqp-btn">Reset</button> &nbsp;&nbsp;
-                <button _ngcontent-tjl-c5="" (click)="toggle2()" class="cqp-btn">Cancel</button>
+                <button _ngcontent-tjl-c5="" class="cqp-btn" (click)="clickresetwelcome()">Reset</button> &nbsp;&nbsp;
+                <button _ngcontent-tjl-c5="" (click)="toggle2();clickresetwelcome()" class="cqp-btn">Cancel</button>
             </td>
         </tr>
     </table>

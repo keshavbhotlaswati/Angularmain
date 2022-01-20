@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HelpertabService } from 'src/app/service/helpertab.service';
 
 @Component({
   selector: 'app-active',
@@ -12,7 +13,9 @@ export class ActiveComponent implements OnInit {
   public inner: boolean = false;
   public outer: boolean = true;
   public comment: boolean = false;
-  constructor() { }
+  public show1:boolean=false;
+  public message:string="";
+  constructor(private helpservice:HelpertabService) { }
 
   ngOnInit() {
   }
@@ -56,5 +59,41 @@ export class ActiveComponent implements OnInit {
       return this.cars.indexOf(selectedCar) < 0;
     });
     this.selectedToRemove = [];
+  }
+ clickreset(){
+    this.show1= true;
+    this.message="Reset for Call-In In Active Request";
+    this.helpservice.changenavigatehelpforbutton(this.show1);
+    this.helpservice.changenavigateforbuttons(this.message);
+
+  }
+ 
+  clickComment(){
+    this.show1= true;
+    this.message="Comment";
+    this.helpservice.changenavigatehelpforbutton(this.show1);
+    this.helpservice.changenavigateforbuttons(this.message);
+  }
+  clicksearch() {
+    this.show1= true;
+    
+    this.message="Search for Call-In";
+    this.helpservice.changenavigatehelpforbutton(this.show1);
+    this.helpservice.changenavigateforbuttons(this.message);
+
+
+
+  }
+  clicksubmitrequest(){
+    this.show1= true;
+    this.message="Inside the Short Number Links";
+    this.helpservice.changenavigatehelpforbutton(this.show1);
+    this.helpservice.changenavigateforbuttons(this.message);
+  }
+  clickresetwelcome(){
+    this.show1= true;
+    this.message="Welcome";
+    this.helpservice.changenavigatehelpforbutton(this.show1);
+    this.helpservice.changenavigateforbuttons(this.message);
   }
 }

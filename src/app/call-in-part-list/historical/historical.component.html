@@ -224,7 +224,7 @@
                             <input type="checkbox" name="editCipl" value="0">
                         </td>
                         <td>
-                            <a (click)=toggle1()>
+                            <a (click)=toggle1();clicksubmitrequest()>
                                 39710
                             </a>&nbsp;
                         </td>
@@ -268,7 +268,7 @@
                             <input type="checkbox" name="editCipl" value="0">
                         </td>
                         <td>
-                            <a (click)=toggle1()>
+                            <a (click)=toggle1();clicksubmitrequest>
                                 39710
                             </a>&nbsp;
                         </td>
@@ -312,7 +312,7 @@
                             <input type="checkbox" name="editCipl" value="0">
                         </td>
                         <td>
-                            <a (click)=toggle1()>
+                            <a (click)=toggle1();clicksubmitrequest>
                                 39710
                             </a>&nbsp;
                         </td>
@@ -356,7 +356,7 @@
                             <input type="checkbox" name="editCipl" value="0">
                         </td>
                         <td>
-                            <a (click)=toggle1()>
+                            <a (click)=toggle1();clicksubmitrequest>
                                 39710
                             </a>&nbsp;
                         </td>
@@ -408,7 +408,7 @@
                     <button type="reset" class="cqp-btn">Export</button> &nbsp;&nbsp;
                     <button (click)="toggle()" class="cqp-btn">Select All</button> &nbsp;&nbsp;
                     <button type="reset" class="cqp-btn">Deselect All</button> &nbsp;&nbsp;
-                    <button (click)="toggle()" class="cqp-btn">Cancel</button>
+                    <button (click)="toggle(); clickreset()" class="cqp-btn">Cancel</button>
                 </td>
             </tr>
         </table>
@@ -528,9 +528,9 @@
             <td _ngcontent-tjl-c5="" width="50%"></td>
             <td _ngcontent-tjl-c5="" align="right">
                 <button _ngcontent-tjl-c5="" class="cqp-btn">Update</button> &nbsp;&nbsp;
-                <button _ngcontent-tjl-c5="" (click)="toggle2()" class="cqp-btn">Comment</button> &nbsp;&nbsp;
-                <button _ngcontent-tjl-c5="" class="cqp-btn" type="reset">Reset</button> &nbsp;&nbsp;
-                <button _ngcontent-tjl-c5="" (click)="toggle1()" class="cqp-btn">Cancel</button>
+                <button _ngcontent-tjl-c5="" (click)="toggle2();clickComment()" class="cqp-btn">Comment</button> &nbsp;&nbsp;
+                <button _ngcontent-tjl-c5="" class="cqp-btn" type="reset" (click)="clicksubmitrequest()">Reset</button> &nbsp;&nbsp;
+                <button _ngcontent-tjl-c5="" (click)="toggle1();clickreset()" class="cqp-btn">Cancel</button>
             </td>
         </tr>
     </table>
@@ -617,8 +617,8 @@
             <td _ngcontent-tjl-c5="" width="50%"></td>
             <td _ngcontent-tjl-c5="" align="right">
                 <button _ngcontent-tjl-c5="" class="cqp-btn">Submit</button> &nbsp;&nbsp;
-                <button _ngcontent-tjl-c5="" class="cqp-btn">Reset</button> &nbsp;&nbsp;
-                <button _ngcontent-tjl-c5="" (click)="toggle2()" class="cqp-btn">Cancel</button>
+                <button _ngcontent-tjl-c5="" class="cqp-btn" (click)="clickresetwelcome()">Reset</button> &nbsp;&nbsp;
+                <button _ngcontent-tjl-c5="" (click)="toggle2();clickresetwelcome()" class="cqp-btn">Cancel</button>
             </td>
         </tr>
     </table>

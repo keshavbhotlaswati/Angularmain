@@ -77,9 +77,31 @@ export class HistoricalComponent implements OnInit {
 
   clickreset(){
     this.show1= true;
-    this.message="Reset for Call-In";
+    this.message="Reset for Call-In in Historical";
     this.helpservice.changenavigatehelpforbutton(this.show1);
     this.helpservice.changenavigateforbuttons(this.message);
 
   }
+
+  clickComment(){
+    this.show1= true;
+    this.message="Comment";
+    this.helpservice.changenavigatehelpforbutton(this.show1);
+    this.helpservice.changenavigateforbuttons(this.message);
+  }
+  clicksubmitrequest(){
+    this.show1= true;
+    this.message="Inside the Short Number Links";
+    this.helpservice.changenavigatehelpforbutton(this.show1);
+    this.helpservice.changenavigateforbuttons(this.message);
+  }
+  clickresetwelcome(){
+    this.show1= true;
+    this.message="Welcome";
+    this.helpservice.changenavigatehelpforbutton(this.show1);
+    this.helpservice.changenavigateforbuttons(this.message);
+  }
+
+
+
 }

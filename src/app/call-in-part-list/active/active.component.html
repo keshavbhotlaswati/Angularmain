@@ -47,9 +47,7 @@
                 <tr>
                     <td width="15%" class="data">Active</td>
                     <td width="15%" class="data">
-                        From&nbsp;
-                        :
-                        04/01/2021
+                        From&nbsp; : 04/01/2021
                     </td>
                     <td width="25%" class="data">
                         <select name="partNo" style="width: 180px" class="data">
@@ -67,17 +65,13 @@
                             <option value="HAM">HAM</option>
                         </select>
                     </td>
-                    <td width="15%" class="data"> <input type="text" name="reqNo" maxlength="7" size="7" value=""
-                            class="data"> </td>
-                    <td width="10%" class="data"> <input type="text" name="refNo" maxlength="10" size="10" value=""
-                            class="data"> </td>
+                    <td width="15%" class="data"> <input type="text" name="reqNo" maxlength="7" size="7" value="" class="data"> </td>
+                    <td width="10%" class="data"> <input type="text" name="refNo" maxlength="10" size="10" value="" class="data"> </td>
                 </tr>
                 <tr>
                     <td width="20%" class="data"></td>
                     <td width="5%" class="data">
-                        To &nbsp;&nbsp;&nbsp;&nbsp;
-                        :
-                        06/30/2021
+                        To &nbsp;&nbsp;&nbsp;&nbsp; : 06/30/2021
                     </td>
                 </tr>
             </tbody>
@@ -135,9 +129,7 @@
                                         </select>
                                     </td>
                                     <td width="35%" valign="top" class="data">
-                                        <select class="form-control" [ngModel]="selectedToAdd" multiple
-                                            name="myselecttsms2" (ngModelChange)="chosenCars($event)"
-                                            style="width: 280px;font-size: 11px;">
+                                        <select class="form-control" [ngModel]="selectedToAdd" multiple name="myselecttsms2" (ngModelChange)="chosenCars($event)" style="width: 280px;font-size: 11px;">
                                             <option *ngFor="let car of cars" [ngValue]="car">{{car.name}}</option>
                                         </select>
                                     </td>
@@ -153,9 +145,7 @@
                                         </div>
                                     </td>
                                     <td width="25%" valign="top" class="data">
-                                        <select class="form-control" [ngModel]="selectedToRemove" multiple
-                                            name="myselecttsms" (ngModelChange)="chosenCarsToRemove($event)"
-                                            style="width: 280px;font-size: 11px;">
+                                        <select class="form-control" [ngModel]="selectedToRemove" multiple name="myselecttsms" (ngModelChange)="chosenCarsToRemove($event)" style="width: 280px;font-size: 11px;">
                                             <option *ngFor="let car of selectedCars" [ngValue]="car">{{car.name}}
                                             </option>
                                         </select>
@@ -169,8 +159,8 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td align="right" colspan="6"><button (click)="toggle()" class="cqp-btn">Search</button> &nbsp;
-                        &nbsp;<button type="reset" class="cqp-btn">Reset</button>
+                    <td align="right" colspan="6"><button (click)="toggle();clicksearch()" class="cqp-btn">Search</button> &nbsp; &nbsp;
+                        <button type="reset" class="cqp-btn" (click)="clickreset()">Reset</button>
                     </td>
                 </tr>
             </tbody>
@@ -186,38 +176,32 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3" class="alerthead2"> <a name="List"></a>List of Active Call-In Part List Items
+                        <td colspan="3" class="alerthead2">
+                            <a name="List"></a>List of Active Call-In Part List Items
                         </td>
                     </tr>
                     <tr>
                         <td colspan="3" class="data">
-                            Click on a record to see the details below or select desired records and an action to
-                            perform on
-                            them.
+                            Click on a record to see the details below or select desired records and an action to perform on them.
                         </td>
                     </tr>
                     <tr>
                         <td width="356" class="data" align="left">
-                            Supplier :
-                            140290 DENSO INTERNATIONAL AMERICA
+                            Supplier : 140290 DENSO INTERNATIONAL AMERICA
                         </td>
                         <td width="356" class="data" align="left"></td>
                         <td width="38%" align="right" class="recordnumber">
-                            9&nbsp;
-                            records
+                            9&nbsp; records
                         </td>
                         <td width="12%" align="center" class="data">
                             &nbsp;
-                            <select name="listPageSelector"
-                                onchange="forms[0].action.value='gotopage';forms[0].submit();" class="data">
+                            <select name="listPageSelector" onchange="forms[0].action.value='gotopage';forms[0].submit();" class="data">
                                 <option value="1" selected="selected">1</option>
-                            </select>
-                            &nbsp;
+                            </select> &nbsp;
                         </td>
                     </tr>
                     <tr>
-                        <td height="10" colspan="3"><img src="/cqp_dev/cqpd/images/clear.gif" width="1" height="1"
-                                border="0"></td>
+                        <td height="10" colspan="3"><img src="/cqp_dev/cqpd/images/clear.gif" width="1" height="1" border="0"></td>
                     </tr>
                 </tbody>
             </table>
@@ -291,7 +275,7 @@
                         </td>
                         <td align="left" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
 
-                            <a (click)="toggle1()" class="allLinkData">
+                            <a (click)="toggle1();clicksubmitrequest()" class="allLinkData">
                                 79106</a>&nbsp;
                         </td>
                         <td align="right" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
@@ -300,8 +284,8 @@
                         </td>
 
                         <td align="left" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
-                            SUB-HEATER
-                            UNIT&nbsp;</td>
+                            SUB-HEATER UNIT&nbsp;
+                        </td>
                         <td align="right" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
                             2021&nbsp;</td>
                         <td align="left" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
@@ -331,7 +315,7 @@
                         </td>
                         <td align="left" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
 
-                            <a (click)="toggle1()" class="allLinkData">
+                            <a (click)="toggle1();clicksubmitrequest()" class="allLinkData">
                                 79106</a>&nbsp;
                         </td>
                         <td align="right" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
@@ -340,8 +324,8 @@
                         </td>
 
                         <td align="left" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
-                            SUB-HEATER
-                            UNIT&nbsp;</td>
+                            SUB-HEATER UNIT&nbsp;
+                        </td>
                         <td align="right" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
                             2020&nbsp;</td>
                         <td align="left" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
@@ -372,7 +356,7 @@
                         </td>
                         <td align="left" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
 
-                            <a (click)="toggle1()" class="allLinkData">
+                            <a (click)="toggle1();clicksubmitrequest()" class="allLinkData">
                                 79106</a>&nbsp;
                         </td>
                         <td align="right" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
@@ -381,8 +365,8 @@
                         </td>
 
                         <td align="left" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
-                            SUB-HEATER
-                            UNIT&nbsp;</td>
+                            SUB-HEATER UNIT&nbsp;
+                        </td>
                         <td align="right" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
                             2021&nbsp;</td>
                         <td align="left" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
@@ -418,7 +402,7 @@
                         <button _ngcontent-tjl-c5="" class="cqp-btn">Export</button> &nbsp;&nbsp;
                         <button _ngcontent-tjl-c5="" class="cqp-btn">Select All</button> &nbsp;&nbsp;
                         <button _ngcontent-tjl-c5="" class="cqp-btn">Deselect All</button> &nbsp;&nbsp;
-                        <button _ngcontent-tjl-c5="" (click)="toggle1()" class="cqp-btn">Cancel</button>
+                        <button _ngcontent-tjl-c5="" (click)="toggle1();clickreset()" class="cqp-btn">Cancel</button>
                     </td>
                 </tr>
             </table>
@@ -429,17 +413,14 @@
     <table border="0" width="970" cellspacing="0" cellpadding="0" align="center" bordercolor="#FFFFFF">
         <tbody>
             <tr>
-                <td nowrap="" colspan="5" class="alerthead2"
-                    style="padding-bottom: 3; border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-bottom-style: none; border-bottom-width: medium"
-                    bordercolor="#990000">Update Call-In Part List Item Active:</td>
+                <td nowrap="" colspan="5" class="alerthead2" style="padding-bottom: 3; border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-bottom-style: none; border-bottom-width: medium" bordercolor="#990000">Update Call-In Part List Item Active:</td>
             </tr>
             <tr>
                 <td class="data" colspan="2" valign="top">Provide details to update a Call-In Part List Item. </td>
             </tr>
 
             <tr>
-                <td style="padding-left: 3; padding-top: 3; padding-bottom: 3; border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-bottom-style: none; border-bottom-width: medium"
-                    width="93%" align="left">Supplier :
+                <td style="padding-left: 3; padding-top: 3; padding-bottom: 3; border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-bottom-style: none; border-bottom-width: medium" width="93%" align="left">Supplier :
                     <!--changed by Subhashis on 25/10 to fix supplier issue-->140290 DENSO INTERNATIONAL AMERICA
                 </td>
                 <td class="data" align="right">Status:</td>
@@ -474,8 +455,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <select name="updStartVinList" onchange="selectVinStart();setTabOut();" style="width: 190px"
-                        class="data">
+                    <select name="updStartVinList" onchange="selectVinStart();setTabOut();" style="width: 190px" class="data">
                         <option value="--Select One--" selected="selected">--Select One--</option>
                         <option value="5FNRL6H2?KB000001" class="data">5FNRL6H2?KB000001</option>
                         <option value="5FNRL6H4?KB000001" class="data">5FNRL6H4?KB000001</option>
@@ -489,12 +469,10 @@
                         <option value="5KBRL688?KB000001" class="data">5KBRL688?KB000001</option>
                         <option value="5KBRL689?KB000001" class="data">5KBRL689?KB000001</option>
                     </select>
-                    <input type="text" name="updVinStart" maxlength="17" size="25" value="5FNRL6H??KB000001"
-                        onchange="setTabOut();" style="color:blue" class="data">
+                    <input type="text" name="updVinStart" maxlength="17" size="25" value="5FNRL6H??KB000001" onchange="setTabOut();" style="color:blue" class="data">
                 </td>
                 <td class="data" colspan="2">
-                    <select name="updEndVinList" onchange="selectVinEnd();setTabOut();" style="width: 190px"
-                        class="data">
+                    <select name="updEndVinList" onchange="selectVinEnd();setTabOut();" style="width: 190px" class="data">
                         <option value="--Select One--" selected="selected">--Select One--</option>
                         <option value="5FNRL6H2?KB999999">5FNRL6H2?KB999999</option>
                         <option value="5FNRL6H4?KB999999">5FNRL6H4?KB999999</option>
@@ -508,8 +486,7 @@
                         <option value="5KBRL688?KB999999">5KBRL688?KB999999</option>
                         <option value="5KBRL689?KB999999">5KBRL689?KB999999</option>
                     </select>
-                    <input type="text" name="updVinEnd" maxlength="17" size="25" value="5FNRL6H??KB999999"
-                        onchange="setTabOut();" style="color:blue" class="data">
+                    <input type="text" name="updVinEnd" maxlength="17" size="25" value="5FNRL6H??KB999999" onchange="setTabOut();" style="color:blue" class="data">
                 </td>
             </tr>
             <tr>
@@ -520,11 +497,8 @@
             <tr>
                 <td class="data" valign="top">04/01/2021</td>
                 <td class="data">
-                    <input type="text" name="updEndDate" maxlength="10" size="8" value="06/30/2021" readonly="readonly"
-                        class="readonlyTextbox"> <input type="button" name="calendar" tabindex="6" value="..."
-                        onclick="resetDate(document.forms[0].updEndDate);popUpCalendar(document.forms[0].updEndDate,document.forms[0].updEndDate, 'mm/dd/yyyy')"
-                        style="border: 1px solid rgb(128,128,128);  border-radius : 4px;HEIGHT: 20px; WIDTH: 25px"
-                        class="instruction">
+                    <input type="text" name="updEndDate" maxlength="10" size="8" value="06/30/2021" readonly="readonly" class="readonlyTextbox"> <input type="button" name="calendar" tabindex="6" value="..." onclick="resetDate(document.forms[0].updEndDate);popUpCalendar(document.forms[0].updEndDate,document.forms[0].updEndDate, 'mm/dd/yyyy')"
+                        style="border: 1px solid rgb(128,128,128);  border-radius : 4px;HEIGHT: 20px; WIDTH: 25px" class="instruction">
                 </td>
                 <td colspan="2" class="data">&nbsp;</td>
             </tr>
@@ -584,9 +558,9 @@
             <td _ngcontent-tjl-c5="" width="50%"></td>
             <td _ngcontent-tjl-c5="" align="right">
                 <button _ngcontent-tjl-c5="" class="cqp-btn">Submit</button> &nbsp;&nbsp;
-                <button _ngcontent-tjl-c5="" (click)="toggle2()" class="cqp-btn">Comment</button> &nbsp;&nbsp;
+                <button _ngcontent-tjl-c5="" (click)="toggle2();clickComment()" class="cqp-btn">Comment</button> &nbsp;&nbsp;
                 <button _ngcontent-tjl-c5="" class="cqp-btn" type="reset">Reset</button> &nbsp;&nbsp;
-                <button _ngcontent-tjl-c5="" (click)="toggle1()" class="cqp-btn">Cancel</button>
+                <button _ngcontent-tjl-c5="" (click)="toggle1();clickreset()" class="cqp-btn">Cancel</button>
             </td>
         </tr>
     </table>
@@ -595,34 +569,29 @@
     <table width="970" align="center" border="0" cellpadding="0" cellspacing="0">
         <tbody>
             <tr>
-                <td colspan="2" class="alerthead2"><a name="List"></a>Comments:</td>
+                <td colspan="2" class="alerthead2">
+                    <a name="List"></a>Comments:</td>
             </tr>
             <tr>
                 <td class="data" colspan="3">Enter a comment and select submit.</td>
             </tr>
             <tr>
-                <td width="300" class="data">Supplier:
-                    011620 ALPINE ELECTRONICS OF AMERICA
+                <td width="300" class="data">Supplier: 011620 ALPINE ELECTRONICS OF AMERICA
                 </td>
             </tr>
 
             <tr>
                 <td width="76" class="data" align="left"></td>
                 <td width="38%" align="right" class="recordnumber">
-                    1
-                    records
+                    1 records
                 </td>
                 <td width="12%" align="center" class="data">
 
                     &nbsp;
 
-                    <select name="listPageSelector"
-                        onchange="document.forms[0].action.value='gotoPageForListSup';document.forms[0].submit();"
-                        class="data">
+                    <select name="listPageSelector" onchange="document.forms[0].action.value='gotoPageForListSup';document.forms[0].submit();" class="data">
                         <option value="1" selected="selected">1</option>
-                    </select>
-
-                    &nbsp;
+                    </select> &nbsp;
 
                 </td>
             </tr>
@@ -645,12 +614,11 @@
             <tr bgcolor="#F6F3B5">
                 <td align="left" width="20%" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
                     05/05/2021 8:45 AM</td>
-                <td align="left" width="60%"
-                    style="page-break-after: always;border-bottom-width: 1; border-left-style: none; padding-left: 4">
+                <td align="left" width="60%" style="page-break-after: always;border-bottom-width: 1; border-left-style: none; padding-left: 4">
                     cscsadsadsads</td>
                 <td align="left" width="10%" style="border-bottom-width: 1; border-left-style: none; padding-left: 4">
-                    Test&nbsp;User 145<br>
-                    VCC74145</td>
+                    Test&nbsp;User 145<br> VCC74145
+                </td>
 
             </tr>
         </tbody>
@@ -679,8 +647,8 @@
             <td _ngcontent-tjl-c5="" width="50%"></td>
             <td _ngcontent-tjl-c5="" align="right">
                 <button _ngcontent-tjl-c5="" class="cqp-btn">Submit</button> &nbsp;&nbsp;
-                <button _ngcontent-tjl-c5="" class="cqp-btn">Reset</button> &nbsp;&nbsp;
-                <button _ngcontent-tjl-c5="" (click)="toggle2()" class="cqp-btn">Cancel</button>
+                <button _ngcontent-tjl-c5="" class="cqp-btn" (click)="clickresetwelcome()">Reset</button> &nbsp;&nbsp;
+                <button _ngcontent-tjl-c5="" (click)="toggle2();clickresetwelcome()" class="cqp-btn">Cancel</button>
             </td>
         </tr>
     </table>

@@ -28,15 +28,14 @@
 <hr>
 <table width="970" cellpadding="4" cellspacing="0" class="supplier-panel-body">
     <tr>
-        <td style="padding-top: 3; padding-bottom: 3; border-left-style:none;border-left-width:thin; border-right-style:none; border-right-width:thin;border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:1"
-            bordercolor="#990000">
-            <button class="cqp-btn" (click)="select(1)">Stack Bar Chart</button> &nbsp;
-            <button class="cqp-btn" (click)="select(2)">Overall Summary</button> &nbsp;
-            <button class="cqp-btn" (click)="select(3)">Part No. Summary</button> &nbsp;
-            <button class="cqp-btn" (click)="select(4)">Claim Details</button> &nbsp;
-            <button class="cqp-btn" (click)="select(5)">Trend Data</button> &nbsp;
+        <td style="padding-top: 3; padding-bottom: 3; border-left-style:none;border-left-width:thin; border-right-style:none; border-right-width:thin;border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:1" bordercolor="#990000">
+            <button class="cqp-btn" (click)="select(1);clickStackBar();">Stack Bar Chart</button> &nbsp;
+            <button class="cqp-btn" (click)="select(2);clickOveralSummary();">Overall Summary</button> &nbsp;
+            <button class="cqp-btn" (click)="select(3);clickPartSummary();">Part No. Summary</button> &nbsp;
+            <button class="cqp-btn" (click)="select(4);clickClaimDetails();">Claim Details</button> &nbsp;
+            <button class="cqp-btn" (click)="select(5);clickTrendData();">Trend Data</button> &nbsp;
             <button class="cqp-btn">Download Trend Analysis Tool</button><br><br>
-            <button class="cqp-btn" (click)="select(7)">Defect Summary</button>
+            <button class="cqp-btn" (click)="select(7);clickDefectSummary();">Defect Summary</button>
         </td>
     </tr>
 </table>
@@ -50,15 +49,9 @@
                 style="height: 400px; width:500px"></canvas>
         </div>-->
         <div style="display: block;" *ngIf="barChartData1">
-            <canvas baseChart 
-              [datasets]="barChartData1"
-              [labels]="barChartLabels"
-              [options]="barChartOptions"
-              [plugins]="barChartPlugins"
-              [legend]="barChartLegend"
-              [chartType]="barChartType">
+            <canvas baseChart [datasets]="barChartData1" [labels]="barChartLabels" [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
             </canvas>
-          </div>
+        </div>
 
     </div>
 </ng-container>
@@ -94,8 +87,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <select name="selectedPartNo" multiple="multiple" size="4" style="width: 180px"
-                                        class="data">
+                                    <select name="selectedPartNo" multiple="multiple" size="4" style="width: 180px" class="data">
                                     </select>
                                 </td>
                             </tr>
@@ -122,9 +114,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="data">
-                                                    <select class="form-control" [ngModel]="selectedToAdd" multiple
-                                                        name="myselecttsms2" (ngModelChange)="chosenCars($event)"
-                                                        style="width: 200px;font-size: 11px;">
+                                                    <select class="form-control" [ngModel]="selectedToAdd" multiple name="myselecttsms2" (ngModelChange)="chosenCars($event)" style="width: 200px;font-size: 11px;">
                                                         <option *ngFor="let car of cars" [ngValue]="car">{{car.name}}
                                                         </option>
                                                     </select>
@@ -141,9 +131,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="data">
-                                                    <select class="form-control" [ngModel]="selectedToRemove" multiple
-                                                        name="myselecttsms" (ngModelChange)="chosenCarsToRemove($event)"
-                                                        style="width: 200px;font-size: 11px;">
+                                                    <select class="form-control" [ngModel]="selectedToRemove" multiple name="myselecttsms" (ngModelChange)="chosenCarsToRemove($event)" style="width: 200px;font-size: 11px;">
                                                         <option *ngFor="let car of selectedCars" [ngValue]="car">
                                                             {{car.name}}
                                                         </option>
@@ -162,9 +150,9 @@
                                         <tbody>
                                             <tr>
                                                 <td align="right">
-                                                    <button (click)="toggle()" class="cqp-btn">Submit</button> &nbsp;
-                                                    &nbsp;<button type="reset" class="cqp-btn">Reset</button> &nbsp;
-                                                    &nbsp;<button class="cqp-btn">Cancel</button>
+                                                    <button (click)="toggle()" class="cqp-btn">Submit</button> &nbsp; &nbsp;
+                                                    <button type="reset" class="cqp-btn">Reset</button> &nbsp; &nbsp;
+                                                    <button class="cqp-btn">Cancel</button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -193,21 +181,19 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="alerthead2" width="60%" height="8"><a name="List"></a>
+                                    <td class="alerthead2" width="60%" height="8">
+                                        <a name="List"></a>
                                         Overall Summary
                                     </td>
                                     <td width="8%" align="right" height="8" class="recordnumber">
 
-                                        942
-                                        records
+                                        942 records
                                     </td>
                                     <td width="12%" align="right" class="data">
 
                                         &nbsp;
 
-                                        <select name="overallSummaryPageSelector"
-                                            onchange="forms[0].action.value='gotoPageOfOverallSummary';forms[0].submit();"
-                                            class="data">
+                                        <select name="overallSummaryPageSelector" onchange="forms[0].action.value='gotoPageOfOverallSummary';forms[0].submit();" class="data">
                                             <option value="1" selected="selected">1</option>
 
                                             <option value="2">2</option>
@@ -306,8 +292,7 @@
                                         </select>
 
 
-                                        <a
-                                            href="/cqp_qa/cqpq/monthlyWarrantyReportsAction.do?action=gotoNextPageOfOverallSummary">Next</a>
+                                        <a href="/cqp_qa/cqpq/monthlyWarrantyReportsAction.do?action=gotoNextPageOfOverallSummary">Next</a>
 
                                     </td>
 
@@ -324,8 +309,7 @@
                     <td>
                         <!-- Calculate the width of individual characters for header -->
 
-                        <table style="table-layout:fixed" border="0" cellspacing="1" cellpadding="4" align="center"
-                            width="970">
+                        <table style="table-layout:fixed" border="0" cellspacing="1" cellpadding="4" align="center" width="970">
                             <tbody>
                                 <tr align="left" valign="top" bgcolor="#D3D9A4">
 
@@ -1366,8 +1350,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <select name="selectedPartNo" multiple="multiple" size="4" style="width: 180px"
-                                        class="data">
+                                    <select name="selectedPartNo" multiple="multiple" size="4" style="width: 180px" class="data">
                                     </select>
                                 </td>
                             </tr>
@@ -1394,9 +1377,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="data">
-                                                    <select class="form-control" [ngModel]="selectedToAdd" multiple
-                                                        name="myselecttsms2" (ngModelChange)="chosenCars($event)"
-                                                        style="width: 200px;font-size: 11px;">
+                                                    <select class="form-control" [ngModel]="selectedToAdd" multiple name="myselecttsms2" (ngModelChange)="chosenCars($event)" style="width: 200px;font-size: 11px;">
                                                         <option *ngFor="let car of cars" [ngValue]="car">{{car.name}}
                                                         </option>
                                                     </select>
@@ -1413,9 +1394,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="data">
-                                                    <select class="form-control" [ngModel]="selectedToRemove" multiple
-                                                        name="myselecttsms" (ngModelChange)="chosenCarsToRemove($event)"
-                                                        style="width: 200px;font-size: 11px;">
+                                                    <select class="form-control" [ngModel]="selectedToRemove" multiple name="myselecttsms" (ngModelChange)="chosenCarsToRemove($event)" style="width: 200px;font-size: 11px;">
                                                         <option *ngFor="let car of selectedCars" [ngValue]="car">
                                                             {{car.name}}
                                                         </option>
@@ -1434,9 +1413,9 @@
                                         <tbody>
                                             <tr>
                                                 <td align="right">
-                                                    <button (click)="toggle()" class="cqp-btn">Submit</button> &nbsp;
-                                                    &nbsp;<button type="reset" class="cqp-btn">Reset</button> &nbsp;
-                                                    &nbsp;<button class="cqp-btn">Cancel</button>
+                                                    <button (click)="toggle()" class="cqp-btn">Submit</button> &nbsp; &nbsp;
+                                                    <button type="reset" class="cqp-btn">Reset</button> &nbsp; &nbsp;
+                                                    <button class="cqp-btn">Cancel</button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1466,21 +1445,18 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="alerthead2" width="60%" height="8"><a name="List"></a>
-                                        General Summary - Short Part No.
-                                        39010-DVD-ROM, NAVIGATOR
+                                    <td class="alerthead2" width="60%" height="8">
+                                        <a name="List"></a>
+                                        General Summary - Short Part No. 39010-DVD-ROM, NAVIGATOR
                                     </td>
                                     <td width="8%" align="right" height="8" class="recordnumber">
-                                        49
-                                        records
+                                        49 records
                                     </td>
                                     <td width="12%" align="right" class="data">
 
                                         &nbsp;
 
-                                        <select name="partNoSummaryPageSelector"
-                                            onchange="forms[0].action.value='gotoPageOfPartNoSummary';forms[0].submit();"
-                                            class="data">
+                                        <select name="partNoSummaryPageSelector" onchange="forms[0].action.value='gotoPageOfPartNoSummary';forms[0].submit();" class="data">
                                             <option value="1" selected="selected">1</option>
 
                                             <option value="2">2</option>
@@ -1489,8 +1465,7 @@
                                         </select>
 
 
-                                        <a
-                                            href="/cqp_qa/cqpq/monthlyWarrantyReportsAction.do?action=gotoNextPageOfPartNoSummary">Next</a>
+                                        <a href="/cqp_qa/cqpq/monthlyWarrantyReportsAction.do?action=gotoNextPageOfPartNoSummary">Next</a>
 
                                     </td>
 
@@ -1504,8 +1479,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <table style="table-layout:fixed" border="0" cellspacing="1" cellpadding="4" align="center"
-                            width="970">
+                        <table style="table-layout:fixed" border="0" cellspacing="1" cellpadding="4" align="center" width="970">
                             <colgroup>
                                 <col width="22%">
                                 <col width="8%">
@@ -2484,8 +2458,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <select name="selectedPartNo" multiple="multiple" size="4" style="width: 180px"
-                                        class="data">
+                                    <select name="selectedPartNo" multiple="multiple" size="4" style="width: 180px" class="data">
                                     </select>
                                 </td>
                             </tr>
@@ -2515,18 +2488,14 @@
                                             </tr>
                                             <tr>
                                                 <td class="data" valign="top">
-                                                    <select name="selectedFeature" size="1"
-                                                        onchange="getFeaturesVal(this);" style="width: 100px"
-                                                        class="data">
+                                                    <select name="selectedFeature" size="1" onchange="getFeaturesVal(this);" style="width: 100px" class="data">
                                                         <option value="MODEL_YEAR" selected="selected">MODEL_YEAR
                                                         </option>
 
                                                     </select>
                                                 </td>
                                                 <td class="data">
-                                                    <select class="form-control" [ngModel]="selectedToAdd" multiple
-                                                        name="myselecttsms2" (ngModelChange)="chosenCars($event)"
-                                                        style="width: 200px;font-size: 11px;">
+                                                    <select class="form-control" [ngModel]="selectedToAdd" multiple name="myselecttsms2" (ngModelChange)="chosenCars($event)" style="width: 200px;font-size: 11px;">
                                                         <option *ngFor="let car of cars" [ngValue]="car">{{car.name}}
                                                         </option>
                                                     </select>
@@ -2543,9 +2512,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="data">
-                                                    <select class="form-control" [ngModel]="selectedToRemove" multiple
-                                                        name="myselecttsms" (ngModelChange)="chosenCarsToRemove($event)"
-                                                        style="width: 200px;font-size: 11px;">
+                                                    <select class="form-control" [ngModel]="selectedToRemove" multiple name="myselecttsms" (ngModelChange)="chosenCarsToRemove($event)" style="width: 200px;font-size: 11px;">
                                                         <option *ngFor="let car of selectedCars" [ngValue]="car">
                                                             {{car.name}}
                                                         </option>
@@ -2564,9 +2531,9 @@
                                         <tbody>
                                             <tr>
                                                 <td align="right">
-                                                    <button (click)="toggle()" class="cqp-btn">Submit</button> &nbsp;
-                                                    &nbsp;<button type="reset" class="cqp-btn">Reset</button> &nbsp;
-                                                    &nbsp;<button class="cqp-btn">Cancel</button>
+                                                    <button (click)="toggle()" class="cqp-btn">Submit</button> &nbsp; &nbsp;
+                                                    <button type="reset" class="cqp-btn">Reset</button> &nbsp; &nbsp;
+                                                    <button class="cqp-btn">Cancel</button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -2592,13 +2559,10 @@
                 </tr>
                 <tr>
                     <td align="center" class="alertRed">
-                        Warranty claims for a previous request was successfully generated. Click on Export button to
-                        view the claim details.<br>
-                        Request was submitted on 05/05/2021 for Supplier No: 011620
+                        Warranty claims for a previous request was successfully generated. Click on Export button to view the claim details.<br> Request was submitted on 05/05/2021 for Supplier No: 011620
                     </td>
                     <td align="right">
-                        <input type="hidden" name="FILE_URL"
-                            value="/CQPTemp/Reports/CLAIM_DETAILS/CLAIM_DETAILS_VCC74145_011620.zip">
+                        <input type="hidden" name="FILE_URL" value="/CQPTemp/Reports/CLAIM_DETAILS/CLAIM_DETAILS_VCC74145_011620.zip">
                         <input type="hidden" name="REPORT_EXISTS" value="true">
                         <input type="hidden" name="TIME_SUBMITTED" value="05/05/2021">
                         <input type="hidden" name="SUPPLIER_NO" value="011620">
@@ -2681,8 +2645,7 @@
             </tr>
             <tr>
                 <td class="data">
-                    <select class="form-control" [ngModel]="selectedToAdd" multiple name="myselecttsms2"
-                        (ngModelChange)="chosenCars($event)" style="width: 200px;font-size: 11px;">
+                    <select class="form-control" [ngModel]="selectedToAdd" multiple name="myselecttsms2" (ngModelChange)="chosenCars($event)" style="width: 200px;font-size: 11px;">
                         <option *ngFor="let car of cars" [ngValue]="car">{{car.name}}
                         </option>
                     </select>
@@ -2699,8 +2662,7 @@
                     </div>
                 </td>
                 <td class="data">
-                    <select class="form-control" [ngModel]="selectedToRemove" multiple name="myselecttsms"
-                        (ngModelChange)="chosenCarsToRemove($event)" style="width: 200px;font-size: 11px;">
+                    <select class="form-control" [ngModel]="selectedToRemove" multiple name="myselecttsms" (ngModelChange)="chosenCarsToRemove($event)" style="width: 200px;font-size: 11px;">
                         <option *ngFor="let car of selectedCars" [ngValue]="car">
                             {{car.name}}
                         </option>
@@ -2715,9 +2677,9 @@
         <tbody>
             <tr>
                 <td align="right">
-                    <button (click)="toggle()" class="cqp-btn">Submit</button> &nbsp;
-                    &nbsp;<button type="reset" class="cqp-btn">Reset</button> &nbsp;
-                    &nbsp;<button class="cqp-btn">Cancel</button>
+                    <button (click)="toggle()" class="cqp-btn">Submit</button> &nbsp; &nbsp;
+                    <button type="reset" class="cqp-btn">Reset</button> &nbsp; &nbsp;
+                    <button class="cqp-btn">Cancel</button>
                 </td>
             </tr>
         </tbody>
@@ -2725,8 +2687,7 @@
     <ng-container *ngIf="show">
         <table width="970" align="center" border="0" cellpadding="0" cellspacing="0" style="padding-left: 3; padding-top: 3; padding-bottom: 3; border-left-style:none;
         border-left-width:medium; border-right-style:none; border-right-width:medium;
-        border-top-style:none; border-top-width:medium; border-bottom-style:solid; border-bottom-width:1"
-            bordercolor="#990000">
+        border-top-style:none; border-top-width:medium; border-bottom-style:solid; border-bottom-width:1" bordercolor="#990000">
             <tbody>
                 <tr>
                     <td colspan="2">
@@ -2735,13 +2696,10 @@
                 </tr>
                 <tr>
                     <td align="center" class="alertRed">
-                        Trend Data for a previous request was successfully generated. Click on Export button to view the
-                        trend data.<br>
-                        Request was submitted on 05/05/2021 for Supplier No: 011620
+                        Trend Data for a previous request was successfully generated. Click on Export button to view the trend data.<br> Request was submitted on 05/05/2021 for Supplier No: 011620
                     </td>
                     <td align="right">
-                        <input type="hidden" name="FILE_URL"
-                            value="/CQPTemp/Reports/TREND_DATA/TREND_DATA_VCC74145_011620.zip">
+                        <input type="hidden" name="FILE_URL" value="/CQPTemp/Reports/TREND_DATA/TREND_DATA_VCC74145_011620.zip">
                         <input type="hidden" name="REPORT_EXISTS" value="true">
                         <input type="hidden" name="TIME_SUBMITTED" value="05/05/2021">
                         <input type="hidden" name="SUPPLIER_NO" value="011620">
@@ -2787,8 +2745,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <select name="selectedPartNo" multiple="multiple" size="4" style="width: 180px"
-                                        class="data">
+                                    <select name="selectedPartNo" multiple="multiple" size="4" style="width: 180px" class="data">
                                     </select>
                                 </td>
                             </tr>
@@ -2815,9 +2772,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="data">
-                                                    <select class="form-control" [ngModel]="selectedToAdd" multiple
-                                                        name="myselecttsms2" (ngModelChange)="chosenCars($event)"
-                                                        style="width: 200px;font-size: 11px;">
+                                                    <select class="form-control" [ngModel]="selectedToAdd" multiple name="myselecttsms2" (ngModelChange)="chosenCars($event)" style="width: 200px;font-size: 11px;">
                                                         <option *ngFor="let car of cars" [ngValue]="car">{{car.name}}
                                                         </option>
                                                     </select>
@@ -2834,9 +2789,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="data">
-                                                    <select class="form-control" [ngModel]="selectedToRemove" multiple
-                                                        name="myselecttsms" (ngModelChange)="chosenCarsToRemove($event)"
-                                                        style="width: 200px;font-size: 11px;">
+                                                    <select class="form-control" [ngModel]="selectedToRemove" multiple name="myselecttsms" (ngModelChange)="chosenCarsToRemove($event)" style="width: 200px;font-size: 11px;">
                                                         <option *ngFor="let car of selectedCars" [ngValue]="car">
                                                             {{car.name}}
                                                         </option>
@@ -2855,9 +2808,9 @@
                                         <tbody>
                                             <tr>
                                                 <td align="right">
-                                                    <button (click)="toggle()" class="cqp-btn">Submit</button> &nbsp;
-                                                    &nbsp;<button type="reset" class="cqp-btn">Reset</button> &nbsp;
-                                                    &nbsp;<button class="cqp-btn">Cancel</button>
+                                                    <button (click)="toggle()" class="cqp-btn">Submit</button> &nbsp; &nbsp;
+                                                    <button type="reset" class="cqp-btn">Reset</button> &nbsp; &nbsp;
+                                                    <button class="cqp-btn">Cancel</button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -2886,21 +2839,19 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="alerthead2" width="60%" height="8"><a name="List"></a>
+                                    <td class="alerthead2" width="60%" height="8">
+                                        <a name="List"></a>
                                         Defect Summary
                                     </td>
                                     <td width="8%" align="right" height="8" class="recordnumber">
 
-                                        941
-                                        records
+                                        941 records
                                     </td>
                                     <td width="12%" align="right" class="data">
 
                                         &nbsp;
 
-                                        <select name="defectSummaryPageSelector"
-                                            onchange="forms[0].action.value='gotoPageOfDefectSummary';forms[0].submit();"
-                                            class="data">
+                                        <select name="defectSummaryPageSelector" onchange="forms[0].action.value='gotoPageOfDefectSummary';forms[0].submit();" class="data">
                                             <option value="1" selected="selected">1</option>
 
                                             <option value="2">2</option>
@@ -2919,8 +2870,7 @@
                                         </select>
 
 
-                                        <a
-                                            href="/cqp_qa/cqpq/monthlyWarrantyReportsAction.do?action=gotoNextPageOfDefectSummary">Next</a>
+                                        <a href="/cqp_qa/cqpq/monthlyWarrantyReportsAction.do?action=gotoNextPageOfDefectSummary">Next</a>
 
                                     </td>
 
@@ -2937,38 +2887,26 @@
                     <td>
 
                         <div style="overflow: auto; width: 100%">
-                            <table style="table-layout:fixed" border="0" cellspacing="1" cellpadding="4" align="center"
-                                width="970">
+                            <table style="table-layout:fixed" border="0" cellspacing="1" cellpadding="4" align="center" width="970">
                                 <tbody>
                                     <tr align="left" valign="top" bgcolor="#D3D9A4">
-                                        <th width="42" class="colheadactive"
-                                            style="border-bottom-width: 0; border-bottom-style:none" rowspan="2">MOD YR
+                                        <th width="42" class="colheadactive" style="border-bottom-width: 0; border-bottom-style:none" rowspan="2">MOD YR
                                         </th>
-                                        <th width="56" class="colheadactive"
-                                            style="border-bottom-width: 0; border-bottom-style:none" rowspan="2">MOD
-                                            NAME</th>
-                                        <th width="56" class="colheadactive"
-                                            style="border-bottom-width: 0; border-bottom-style:none" rowspan="2">FAC
-                                            NAME</th>
-                                        <th width="49" class="colheadactive"
-                                            style="border-bottom-width: 0; border-bottom-style:none" rowspan="2">PART NO
+                                        <th width="56" class="colheadactive" style="border-bottom-width: 0; border-bottom-style:none" rowspan="2">MOD NAME
                                         </th>
-                                        <th width="63" class="colheadactive"
-                                            style="border-bottom-width: 0; border-bottom-style:none" rowspan="2">PART
-                                            NAME</th>
-                                        <th width="84" class="colheadactive"
-                                            style="border-bottom-width: 0; float:top; align:top">KA Repl Part</th>
-                                        <th width="64" class="colheadactive"
-                                            style="border-bottom-width: 0; float:top; align:top">KA Cost</th>
-                                        <th width="64" class="colheadactive"
-                                            style="border-bottom-width: 0; float:top; align:top">KA Sold</th>
-                                        <th width="77" class="colheadactive"
-                                            style="border-bottom-width: 0; float:top; align:top">KA Defect %</th>
-                                        <th width="152" class="colheadactive"
-                                            style="border-bottom-width: 0; float:top; align:top">KA Repl Parts Last 30
-                                            Days</th>
-                                        <th valign="top" width="84" class="colheadactive"
-                                            style="border-left: 0; border-bottom-style:none" rowspan="2">Market Ratio
+                                        <th width="56" class="colheadactive" style="border-bottom-width: 0; border-bottom-style:none" rowspan="2">FAC NAME
+                                        </th>
+                                        <th width="49" class="colheadactive" style="border-bottom-width: 0; border-bottom-style:none" rowspan="2">PART NO
+                                        </th>
+                                        <th width="63" class="colheadactive" style="border-bottom-width: 0; border-bottom-style:none" rowspan="2">PART NAME
+                                        </th>
+                                        <th width="84" class="colheadactive" style="border-bottom-width: 0; float:top; align:top">KA Repl Part</th>
+                                        <th width="64" class="colheadactive" style="border-bottom-width: 0; float:top; align:top">KA Cost</th>
+                                        <th width="64" class="colheadactive" style="border-bottom-width: 0; float:top; align:top">KA Sold</th>
+                                        <th width="77" class="colheadactive" style="border-bottom-width: 0; float:top; align:top">KA Defect %</th>
+                                        <th width="152" class="colheadactive" style="border-bottom-width: 0; float:top; align:top">KA Repl Parts Last 30 Days
+                                        </th>
+                                        <th valign="top" width="84" class="colheadactive" style="border-left: 0; border-bottom-style:none" rowspan="2">Market Ratio
                                         </th>
 
                                     </tr>
@@ -2979,8 +2917,7 @@
                                         <th width="64" class="colheadactive" style="border-bottom-width: 0">KC Sold</th>
                                         <th width="77" class="colheadactive" style="border-bottom-width: 0">KC Defect %
                                         </th>
-                                        <th width="152" class="colheadactive" style="border-bottom-width: 0">KC Repl
-                                            Parts Last 30 Days</th>
+                                        <th width="152" class="colheadactive" style="border-bottom-width: 0">KC Repl Parts Last 30 Days</th>
 
 
                                     </tr>

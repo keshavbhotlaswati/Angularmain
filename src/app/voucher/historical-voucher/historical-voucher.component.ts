@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HelpertabService } from 'src/app/service/helpertab.service';
 
 @Component({
   selector: 'app-historical-voucher',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoricalVoucherComponent implements OnInit {
 
+
+  
   constructor() { }
 
   ngOnInit() {
   }
 
+  
 }
