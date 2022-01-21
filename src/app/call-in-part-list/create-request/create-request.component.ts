@@ -100,7 +100,7 @@ export class CreateRequestComponent implements OnInit {
   }
   clickresetwelcome(){
     this.show1= true;
-    this.message="Call In Part List Welcome";
+    this.message="Welcome";
     this.helpservice.changenavigatehelpforbutton(this.show1);
     this.helpservice.changenavigateforbuttons(this.message);
   }

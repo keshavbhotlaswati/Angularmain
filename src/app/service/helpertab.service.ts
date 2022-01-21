@@ -163,6 +163,7 @@ break;
     
       
       return environment.SUPP_TPL_SEARCH_HELP;
+    
   break;
   
   case "Voucher":
